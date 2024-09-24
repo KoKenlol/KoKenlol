@@ -1,0 +1,33 @@
+docker ps
+docker ps -all
+docker run busybox
+docker run busybox ping google.com
+docker stop 
+docker rm 
+docker system prune # อันตรายอย่าหาพิมพ์ไอ้สัส อย่าโง่ กูข้อร้อง
+docker exec
+docker exec -it ...... bach
+http://localhost:9000/
+docker run --name mynginx -d -p 3000:80 nginx
+docker run -d -p 4000:80 nginx
+docker logs 65b976a0157e2d9caf67ee5b9aa00c5e009f12d1aad5052b7e4125792f7b16fc
+docker system info
+docker system df
+docker images
+docker image inspect nginx
+docker image rm hello-world
+
+
+docker run --name mysql --network wordpress -e MYSQL_ROOT_PASSWORD=1111 -e MYSQL_DATABASE=wordpress_db -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress -d mysql:5.7
+docker run --name pma --network wordpress -p 8888:80 -e PMA_ARBITRARY=1 -d phpmyadmin/phpmyadmin
+docker run -d --name wordpress --network wordpress -p 888:80 -e WORDPRESS_DB_HOST=mysql -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -e WORDPRESS_DB_NAME=wordpress_db wordpress
+
+แบบที่ 2 volume
+
+docker volume ls 
+docker volume create wp_volume
+
+
+docker run -d --name mysql02 --network wordpress02 -v mysql_volume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=1111 -e MYSQL_DATABASE=wordpress02_db -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress -d mysql:5.7
+docker run --name pma02 --network wordpress02 -p 8889:80 -e PMA_ARBITRARY=1 -d phpmyadmin/phpmyadmin
+docker run -d --name wordpress02  --network wordpress02 -v wp_volume:/var/www/html -e WORDPRESS_DB_HOST=mysql02 -e WORDPRESS_DB_USER=wordpress -e WORDPRESS_DB_PASSWORD=wordpress -e WORDPRESS_DB_NAME=wordpress02_db -p 889:80 wordpress
