@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: client
+  template: 
+    metadata:
+      name: client-pods
+      labels:
+        app: client
+    spec:
+      containers:
+      - name: client
+        image: imsuriyapi/todo-app:v4
+
+
+
+
+
+#คำสั่ง kubectl ที่ใช้บ่อย
+#kubectl apply -f .\client-delployment.yml สร้าง deployment จากไฟล์ client-delployment.yml
+#kubectl get all ดูทุกอย่างที่เกี่ยวกับ k8s
+#kubectl delete pods client-deployment-c69cb99fc-fzqzh ลบ pod ที่ชื่อ client-deployment-c69cb99fc-fzqzh {pod-name}
+#kubectl delete all --all ลบทุกอย่างที่เกี่ยวกับ k8s
+#kubectl delete deployments client-deployment ลบ deployment ที่ชื่อ client-deployment 
+
+        
